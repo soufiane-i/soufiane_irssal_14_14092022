@@ -5,35 +5,67 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-import { useState } from "react";
-
+import { useContext, useState } from "react";
+import dataContext from "../../../Context/dataContext";
 type SelectInputProps = {
   label: string;
-  type: string;
 };
 
-function SelectInput(props: SelectInputProps) {
+function SelectInput(props: SelectInputProps): any {
   const [useName, setUseName] = useState("");
-
+  const contextData = useContext(dataContext);
   const handleChange = (event: SelectChangeEvent) => {
     setUseName(event.target.value as string);
+    if (props.label == "States") {
+      contextData.updateState(event.target.value?.toString());
+    } else if (props.label == "Department") {
+      contextData.updateStartDate(event.target.value?.toString());
+    }
   };
-  return (
-    <FormControl fullWidth>
-      <InputLabel id="demo-simple-select-label">{props.label}</InputLabel>
-      <Select
-        labelId="demo-simple-select-label"
-        id="demo-simple-select"
-        value={useName}
-        label={`${props.label}`}
-        onChange={handleChange}
-      >
-        {states.map((e) => (
-          <MenuItem value={e}>{e}</MenuItem>
-        ))}
-      </Select>
-    </FormControl>
-  );
+
+  if (props.label == "States") {
+    return (
+      <FormControl fullWidth className="formInput">
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={useName}
+          label={`${props.label}`}
+          onChange={handleChange}
+          displayEmpty
+          required
+        >
+          <MenuItem value="">{props.label}</MenuItem>
+          {states.map((e) => (
+            <MenuItem value={e} key={e}>
+              {e}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+    );
+  } else if (props.label == "Department") {
+    return (
+      <FormControl fullWidth className="formInput">
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={useName}
+          label={`${props.label}`}
+          onChange={handleChange}
+          displayEmpty
+          required
+        >
+          <MenuItem value="">{props.label}</MenuItem>
+          {department.map((e) => (
+            <MenuItem value={e} key={e}>
+              {e}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+    );
+  }
 }
 
 export default SelectInput;

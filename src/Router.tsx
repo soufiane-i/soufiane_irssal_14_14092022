@@ -2,7 +2,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import CurrentEmployees from "./Components/CurrentEmployees/CurrentEmployees";
 import HomePage from "./Components/HomePage/HomePage";
 
-export default function Router() {
+function Router() {
   return (
     <>
       <BrowserRouter>
@@ -14,3 +14,5 @@ export default function Router() {
     </>
   );
 }
+
+export default Router;

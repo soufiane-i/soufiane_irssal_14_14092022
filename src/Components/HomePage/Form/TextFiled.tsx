@@ -1,7 +1,6 @@
-import { TextField } from "@mui/material";
+import { Input, TextField } from "@mui/material";
 
 type TextFieldInputProps = {
-  id: string;
   label: string;
   type: string;
   value: string;
@@ -11,16 +10,17 @@ type TextFieldInputProps = {
 
 function TextFieldInput(props: TextFieldInputProps) {
   return (
-    <TextField
-      id={props.id}
-      label={props.label}
+    <Input
+      className="formInput"
+      id={props.name}
+      placeholder={props.label}
       type={props.type}
       value={props.value}
       name={props.name}
       required
       error={false}
-      helperText="incorrect entry"
       onChange={props.onChange}
+      fullWidth
     />
   );
 }

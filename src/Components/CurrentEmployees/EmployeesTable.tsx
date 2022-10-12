@@ -70,7 +70,7 @@ const rows = [
     "Websterville",
     10
   ),
-  createData(
+  /*   createData(
     "Cecilia",
     "Blair",
     new Date("2020-07-22"),
@@ -1334,7 +1334,7 @@ const rows = [
     "Fruitdale",
     "Remington",
     45
-  ),
+  ), */
 ];
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
@@ -1565,78 +1565,70 @@ export default function EmployeesTable() {
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
   return (
-    <Box sx={{ width: "90%", mx: "auto" }}>
-      <Typography
-        sx={{
-          flex: "1 1 100%",
-          my: 4,
-          textAlign: "center",
-          fontSize: "32px",
-        }}
-        variant="h6"
-        id="tableTitle"
-        component="div"
-      >
-        Current Employees
-      </Typography>
-      <Paper sx={{ width: "100%", mb: 2 }}>
-        <SearchBar
-          value={searched}
-          onChange={(searchVal) => requestSearch(searchVal)}
-          onCancelSearch={() => cancelSearch()}
-        />
-        <TableContainer>
-          <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
-            <EmployeesTableHead
-              order={order}
-              orderBy={orderBy}
-              onRequestSort={handleRequestSort}
-              rowCount={rows.length}
-            />
-            <TableBody>
-              {rowsAct
-                .slice()
-                .sort(getComparator(order, orderBy))
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row) => {
-                  return (
-                    <TableRow>
-                      <TableCell align="left">{row.firstName}</TableCell>
-                      <TableCell align="left">{row.lastName}</TableCell>
-                      <TableCell align="left">
-                        {`${row.startDate.getDay()}-${row.startDate.getMonth()}-${row.startDate.getFullYear()}`}
-                      </TableCell>
-                      <TableCell align="left">{row.department}</TableCell>
-                      <TableCell align="left">{`${row.dateOfBirth.getDay()}-${row.dateOfBirth.getMonth()}-${row.dateOfBirth.getFullYear()}`}</TableCell>
-                      <TableCell align="left">{row.street}</TableCell>
-                      <TableCell align="left">{row.city}</TableCell>
-                      <TableCell align="left">{row.state}</TableCell>
-                      <TableCell align="left">{row.zipCode}</TableCell>
-                    </TableRow>
-                  );
-                })}
-              {emptyRows > 0 && (
-                <TableRow
-                  style={{
-                    height: (dense ? 33 : 53) * emptyRows,
-                  }}
-                >
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[10, 25, 50, 100]}
-          component="div"
-          count={rows.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-      </Paper>
-    </Box>
+    <>
+      <h2>Employee List</h2>
+      <Box sx={{ width: "90%", mx: "auto" }}>
+        <div className="tableHead">
+          <TablePagination
+            rowsPerPageOptions={[10, 25, 50, 100]}
+            component="div"
+            count={rows.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+          <SearchBar
+            value={searched}
+            onChange={(searchVal) => requestSearch(searchVal)}
+            onCancelSearch={() => cancelSearch()}
+          />
+        </div>
+        <Paper sx={{ width: "100%", mb: 2 }}>
+          <TableContainer>
+            <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
+              <EmployeesTableHead
+                order={order}
+                orderBy={orderBy}
+                onRequestSort={handleRequestSort}
+                rowCount={rows.length}
+              />
+              <TableBody>
+                {rowsAct
+                  .slice()
+                  .sort(getComparator(order, orderBy))
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((row) => {
+                    return (
+                      <TableRow>
+                        <TableCell align="left">{row.firstName}</TableCell>
+                        <TableCell align="left">{row.lastName}</TableCell>
+                        <TableCell align="left">
+                          {`${row.startDate.getDay()}-${row.startDate.getMonth()}-${row.startDate.getFullYear()}`}
+                        </TableCell>
+                        <TableCell align="left">{row.department}</TableCell>
+                        <TableCell align="left">{`${row.dateOfBirth.getDay()}-${row.dateOfBirth.getMonth()}-${row.dateOfBirth.getFullYear()}`}</TableCell>
+                        <TableCell align="left">{row.street}</TableCell>
+                        <TableCell align="left">{row.city}</TableCell>
+                        <TableCell align="left">{row.state}</TableCell>
+                        <TableCell align="left">{row.zipCode}</TableCell>
+                      </TableRow>
+                    );
+                  })}
+                {emptyRows > 0 && (
+                  <TableRow
+                    style={{
+                      height: (dense ? 33 : 53) * emptyRows,
+                    }}
+                  >
+                    <TableCell colSpan={6} />
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Paper>
+      </Box>
+    </>
   );
 }
