@@ -1,4 +1,4 @@
-import dayjs, { Dayjs } from "dayjs";
+import { Dayjs } from "dayjs";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -17,9 +17,7 @@ function DatePicker(props: DatePickerProps) {
   const handleChange = (newValue: Dayjs | null) => {
     setValue(newValue);
     if (props.placeholder == "Date of Birth") {
-      contextData.updateDateOfBirth(newValue?.toString());
     } else if (props.placeholder == "Start Date") {
-      contextData.updateStartDate(newValue?.toString());
     }
   };
 

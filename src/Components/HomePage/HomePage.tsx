@@ -11,7 +11,6 @@ function HomePage() {
       <main>
         <CreateEmployeeForm />
       </main>
-      <Modal />
     </>
   );
 }

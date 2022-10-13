@@ -17,9 +17,7 @@ function SelectInput(props: SelectInputProps): any {
   const handleChange = (event: SelectChangeEvent) => {
     setUseName(event.target.value as string);
     if (props.label == "States") {
-      contextData.updateState(event.target.value?.toString());
     } else if (props.label == "Department") {
-      contextData.updateStartDate(event.target.value?.toString());
     }
   };
 

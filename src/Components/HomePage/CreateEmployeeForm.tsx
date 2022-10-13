@@ -1,12 +1,12 @@
-import { Button, Card, CardContent, Grid, TextField } from "@mui/material";
-import { Stack } from "@mui/system";
+import { Button, CardContent, Grid, TextField } from "@mui/material";
 import dataContext from "../../Context/dataContext";
 import DatePicker from "./Form/DatePicker";
 import SelectInput from "./Form/SelectInput";
 import TextFieldInput from "./Form/TextFiled";
 import { useContext, useState } from "react";
-import { useForm, Form } from "./Form/useForm";
+import { useForm } from "./Form/useForm";
 import { useNavigate } from "react-router-dom";
+import { FirebaseDatabaseMutation } from "@react-firebase/database";
 
 const initialValues = {
   firstName: "",
@@ -28,10 +28,7 @@ function CreateEmployeeForm() {
 
   const handlerSubmit = async (e: any) => {
     e.preventDefault();
-    contextData.updateFirstName(values.firstName.toString());
-    contextData.updateLastName(values.lastName.toString());
-    contextData.updateStreet(values.street.toString());
-    contextData.updateCity(values.city.toString());
+    //contextData.updateEmployees([...contextData.employees, ])
     navigate("/employee-list");
   };
   return (
@@ -103,6 +100,7 @@ function CreateEmployeeForm() {
           <Grid item xs={12} className="gridItem">
             <SelectInput label="Department" />
           </Grid>
+
           <Button
             onClick={handlerSubmit}
             type="submit"

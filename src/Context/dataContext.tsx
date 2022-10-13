@@ -1,23 +1,12 @@
 import { createContext } from "react";
+import { Employee } from "../Interface";
 
-export default createContext({
-  firstName: "",
-  lastName: "",
-  dateOfBirth: "",
-  startDate: "",
-  street: "",
-  city: "",
-  state: "",
-  zipCode: "",
-  department: "",
-
-  updateFirstName: (name: any) => {},
-  updateLastName: (name: any) => {},
-  updateDateOfBirth: (name: any) => {},
-  updateStartDate: (name: any) => {},
-  updateStreet: (name: any) => {},
-  updateCity: (name: any) => {},
-  updateState: (name: any) => {},
-  updateZipCode: (name: any) => {},
-  updateDepartment: (name: any) => {},
-});
+interface contextInterface {
+  employees: Employee[];
+  updateEmployees: (employee: Employee[]) => void;
+}
+const context: contextInterface = {
+  employees: [],
+  updateEmployees: ([]) => {},
+};
+export default createContext(context);

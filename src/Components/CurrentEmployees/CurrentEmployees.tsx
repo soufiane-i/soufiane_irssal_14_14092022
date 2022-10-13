@@ -1,7 +1,7 @@
 import Header from "../Header";
 import Nav from "../Nav";
 import EmployeesTable from "./EmployeesTable";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import dataContext from "../../Context/dataContext";
 
 function CurrentEmployees() {
