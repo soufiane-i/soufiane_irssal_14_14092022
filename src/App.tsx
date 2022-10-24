@@ -12,7 +12,6 @@ var firebase = require("firebase/app");
 require("firebase/database");
 
 function App() {
-  console.log(firebaseConfig);
   const [employees, setEmployees] = useState<Employee[]>(rows);
 
   const contextData = {

@@ -12,7 +12,7 @@ type DatePickerProps = {
 };
 
 function DatePicker(props: DatePickerProps) {
-  const [value, setValue] = useState<Dayjs | null | string>("fefef");
+  const [value, setValue] = useState<any>("fefef");
   const contextData = useContext(dataContext);
   const handleChange = (newValue: Dayjs | null) => {
     setValue(newValue);
@@ -25,6 +25,7 @@ function DatePicker(props: DatePickerProps) {
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Stack spacing={3}>
         <DesktopDatePicker
+          className="date"
           toolbarPlaceholder="Date desktop"
           inputFormat="MM/DD/YYYY"
           value={value}

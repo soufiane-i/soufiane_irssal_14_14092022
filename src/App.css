@@ -61,7 +61,7 @@ main h2 {
 }
 
 .formGridContainer {
-  width: 15vw !important;
+  width: 200px !important;
   margin: 0 auto !important;
   height: 100%;
   justify-content: space-between !important;
@@ -77,13 +77,35 @@ main h2 {
   color: rgba(0, 0, 0, 0.6) !important;
 }
 
+.css-1idn90j-MuiGrid-root {
+  border-radius: 10px;
+  height: 30px;
+  width: 300px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .formInput {
   background-color: white !important;
-  border: 1px #93ad18 solid !important;
+  border: none !important;
   border-radius: 10px;
-  height: 35px;
+  height: 37px;
   padding: 0 15px;
   font-size: 15px !important;
+  box-shadow: none !important;
+}
+
+.MuiInputBase-root
+  .MuiInput-root
+  .MuiInput-underline
+  .MuiInputBase-colorPrimary
+  .MuiInputBase-fullWidth
+  .Mui-focused
+  .formInput
+  .css-sje21u-MuiInputBase-root-MuiInput-root {
+  border: none !important;
+  outline: none !important;
 }
 
 fieldset {
@@ -107,9 +129,10 @@ fieldset {
 }
 
 .gridItem {
-  height: 35px;
+  height: 40px;
   padding: 0 !important;
   display: flex;
+  border: 1px #93ad18 solid !important;
 }
 
 .gridItem:nth-child(5) .formInput {
@@ -120,11 +143,13 @@ fieldset {
   border-bottom: none !important;
 }
 
+/* DateInput */
 .css-1lwbda4-MuiStack-root {
   background-color: white !important;
-  border: 1px #93ad18 solid !important;
+  border: none !important;
   border-radius: 10px;
   width: 100% !important;
+  height: 100% !important;
 }
 
 @media screen and (max-width: 600px) {
@@ -135,7 +160,7 @@ fieldset {
 
 .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
   padding: 0 15px !important;
-  height: 35px !important;
+  height: 38px !important;
   border-radius: 10px !important;
   font-size: 15px !important;
 }
@@ -145,17 +170,12 @@ fieldset {
 }
 
 .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
-  padding: 7px 15px !important;
+  padding: 5px 15px !important;
   font-size: 15px !important;
 }
 
 form {
   padding: 40px 0;
-}
-
-/*Date Input*/
-.css-1lwbda4-MuiStack-root {
-  height: 35px !important;
 }
 
 h3 {
@@ -194,4 +214,14 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+/*TextFiled*/
+.error {
+  border: 1px hsl(0, 100%, 70%) solid !important;
+}
+
+/* Inputs */
+.css-1x51dt5-MuiInputBase-input-MuiInput-input {
+  padding: 0 !important;
 }

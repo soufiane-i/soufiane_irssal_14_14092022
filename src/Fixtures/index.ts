@@ -25,7 +25,7 @@ function createData(
 }
 
 export const rows = [
-  /*   createData(
+  createData(
     "Mccormick",
     "Puckett",
     new Date("2020-08-22"),
@@ -35,7 +35,7 @@ export const rows = [
     "Caberfae",
     "Websterville",
     10
-  ), */
+  ),
   createData(
     "Cecilia",
     "Blair",
@@ -69,7 +69,7 @@ export const rows = [
     "Ruckersville",
     15
   ),
-  createData(
+  /*   createData(
     "Savannah",
     "Johns",
     new Date("2020-08-22"),
@@ -1300,5 +1300,5 @@ export const rows = [
     "Fruitdale",
     "Remington",
     45
-  ),
+  ), */
 ];
