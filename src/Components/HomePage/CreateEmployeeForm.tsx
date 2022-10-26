@@ -216,7 +216,10 @@ function CreateEmployeeForm() {
       contextData.employees.push(newData);
       contextData.updateEmployees([...contextData.employees]);
       console.log(contextData);
-      navigate("/employee-list");
+      const modal = document.querySelector(".modalContainer");
+      const cross = document.querySelector(".imgContainer");
+      modal?.classList.add("modalOff");
+      //navigate("/employee-list");
     } else {
       console.log("refuse");
       console.log(firstNameTest);

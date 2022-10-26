@@ -2,6 +2,8 @@ import Header from "../Header";
 import Nav from "../Nav";
 import CreateEmployeeForm from "./CreateEmployeeForm";
 import { ModalPlugin } from "soufiane.irssal_plugin";
+
+import Modal from "./Modal/modal";
 function HomePage() {
   return (
     <>
@@ -10,7 +12,8 @@ function HomePage() {
       <main>
         <CreateEmployeeForm />
       </main>
-      <ModalPlugin />
+      {/* <ModalPlugin /> */}
+      <Modal />
     </>
   );
 }

@@ -1,7 +1,11 @@
 function Modal() {
+  function ModalClose() {
+    const modal = document.querySelector(".modalContainer");
+    modal?.classList.add("modalOff");
+  }
   return (
     <div
-      className="modalContainer"
+      className="modalContainer modalOff"
       style={{
         position: "absolute",
         height: "100%",
@@ -50,6 +54,7 @@ function Modal() {
               width: "auto",
               filter: "invert(100%)",
             }}
+            onClick={ModalClose}
           />
         </div>
       </div>
