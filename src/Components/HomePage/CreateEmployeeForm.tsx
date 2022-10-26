@@ -3,7 +3,7 @@ import dataContext from "../../Context/dataContext";
 import DatePicker from "./Form/DatePicker";
 import SelectInput from "./Form/SelectInput";
 import TextFieldInput from "./Form/TextFiled";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "./Form/useForm";
 import { useNavigate } from "react-router-dom";
 import { FirebaseDatabaseMutation } from "@react-firebase/database";
@@ -69,6 +69,11 @@ function CreateEmployeeForm() {
 
   const handlerSubmit = async (e: any) => {
     e.preventDefault();
+    function crossDown() {
+      const modal = document.querySelector(".modalContainer");
+      modal?.classList.add("modalOff");
+      console.log(modal);
+    }
     let firstNameTest = false;
     let lastNameTest = false;
     let startDateTest = false;
@@ -218,7 +223,11 @@ function CreateEmployeeForm() {
       console.log(contextData);
       const modal = document.querySelector(".modalContainer");
       const cross = document.querySelector(".imgContainer");
-      modal?.classList.add("modalOff");
+
+      console.log(cross);
+
+      cross?.addEventListener("keydown", crossDown);
+      modal?.classList.remove("modalOff");
       //navigate("/employee-list");
     } else {
       console.log("refuse");

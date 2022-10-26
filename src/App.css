@@ -225,3 +225,11 @@ input:-webkit-autofill:active {
 .css-1x51dt5-MuiInputBase-input-MuiInput-input {
   padding: 0 !important;
 }
+
+.modalContainer {
+  display: flex !important;
+}
+
+.modalOff {
+  display: none !important;
+}
