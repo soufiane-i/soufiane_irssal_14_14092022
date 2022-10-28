@@ -22,19 +22,3 @@ export function useForm(initialValues: any) {
     handleInputChange,
   };
 }
-
-/* const useStyles = makeStyles((theme: any) => ({
-  root: {
-    "& .MuiFormControl-root": {
-      width: "80%",
-      margin: theme.spacing(1),
-    },
-  },
-}));
-
-export function Form(props: any) {
-  const classes = useStyles();
-
-  return <form className={classes.root}>{props.children}</form>;
-}
- */

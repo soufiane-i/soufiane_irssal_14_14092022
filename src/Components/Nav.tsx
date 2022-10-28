@@ -1,13 +1,10 @@
-import { Container, Link, Typography } from "@mui/material";
+import { Link } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-
-type NavProps = {
-  refLink: string;
-  text: string;
-};
+import { NavProps } from "../Interface/";
 
 function Nav(props: NavProps) {
   const navigate = useNavigate();
+
   const LinkTo = (e: any) => {
     e.preventDefault();
     if (props.refLink == "employee-list") {

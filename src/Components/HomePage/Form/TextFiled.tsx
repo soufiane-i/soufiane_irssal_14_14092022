@@ -21,6 +21,8 @@ function TextFieldInput(props: TextFieldInputProps) {
       error={false}
       onChange={props.onChange}
       fullWidth
+      title={props.name}
+      role={"button"}
     />
   );
 }

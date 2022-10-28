@@ -9,3 +9,8 @@ export interface Employee {
   state: string;
   zipCode: number;
 }
+
+export interface NavProps {
+  refLink: string;
+  text: string;
+}
