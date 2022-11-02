@@ -7,11 +7,18 @@ export function TextFieldTest(
   if (regex.test(value)) {
     isValue.current = true;
     input.classList.remove("error");
+    console.log(isValue.current);
+
+    console.log(input);
+
+    console.log(isValue.current);
   } else {
     isValue.current = false;
     input.classList.add("error");
+    console.log(input);
+
+    console.log(isValue.current);
   }
-  console.log(isValue.current);
 }
 
 export function SelectTest(
@@ -26,7 +33,6 @@ export function SelectTest(
     isValue.current = false;
     input.classList.add("error");
   }
-  console.log(isValue.current);
 }
 
 export function DateTest(
@@ -41,5 +47,4 @@ export function DateTest(
     isValue.current = false;
     input.classList.add("error");
   }
-  console.log(isValue.current);
 }

@@ -50,6 +50,8 @@ function CreateEmployeeForm() {
     setDepartmentValue(event.target.value as string);
   };
   const stateHandleChange = (event: SelectChangeEvent) => {
+    console.log(event.target.value);
+
     setStateValue(event.target.value as string);
   };
 
@@ -88,8 +90,8 @@ function CreateEmployeeForm() {
     DateTest(startDateValue, isStartDate, formInputs[3]);
     TextFieldTest(adressRegex, values.street, isStreet, formInputs[4]);
     TextFieldTest(adressRegex, values.city, isCity, formInputs[5]);
-    TextFieldTest(zipCodeRegex, values.zipCode, isZipCode, formInputs[6]);
-    SelectTest(stateValue, isState, formInputs[7]);
+    SelectTest(stateValue, isState, formInputs[6]);
+    TextFieldTest(zipCodeRegex, values.zipCode, isZipCode, formInputs[7]);
     SelectTest(departmentValue, isDepartment, formInputs[8]);
 
     if (
@@ -123,7 +125,7 @@ function CreateEmployeeForm() {
           spacing={0}
           className="formGridContainer"
         >
-          <Grid item className="gridItem" xs={12}>
+          <Grid item className="gridItem firstNameContainer" xs={12}>
             <TextFieldInput
               label="First Name"
               type="text"
@@ -132,7 +134,7 @@ function CreateEmployeeForm() {
               onChange={handleInputChange}
             />
           </Grid>
-          <Grid item xs={12} className="gridItem">
+          <Grid item xs={12} className="gridItem lastNameContainer">
             <TextFieldInput
               label="Last Name"
               type="text"
@@ -141,7 +143,7 @@ function CreateEmployeeForm() {
               onChange={handleInputChange}
             />
           </Grid>
-          <Grid item xs={12} className="gridItem">
+          <Grid item xs={12} className="gridItem dateOfBirthContainer">
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <Stack spacing={3}>
                 <DesktopDatePicker
@@ -162,7 +164,7 @@ function CreateEmployeeForm() {
               </Stack>
             </LocalizationProvider>
           </Grid>
-          <Grid item xs={12} className="gridItem">
+          <Grid item xs={12} className="gridItem startDateContainer">
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <Stack spacing={3}>
                 <DesktopDatePicker
@@ -184,7 +186,7 @@ function CreateEmployeeForm() {
             </LocalizationProvider>
           </Grid>
           <h3>Adress</h3>
-          <Grid xs={12} item className="gridItem">
+          <Grid xs={12} item className="gridItem streetContainer">
             <TextFieldInput
               label="Street"
               type="text"
@@ -193,7 +195,7 @@ function CreateEmployeeForm() {
               onChange={handleInputChange}
             />
           </Grid>
-          <Grid xs={12} item className="gridItem">
+          <Grid xs={12} item className="gridItem cityContainer">
             <TextFieldInput
               label="City"
               type="text"
@@ -202,8 +204,8 @@ function CreateEmployeeForm() {
               onChange={handleInputChange}
             />
           </Grid>
-          <Grid item xs={12} className="gridItem">
-            <FormControl fullWidth className="formInput">
+          <Grid item xs={12} className="gridItem stateContainer">
+            <FormControl fullWidth className="formInput stateInput">
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -212,17 +214,21 @@ function CreateEmployeeForm() {
                 onChange={stateHandleChange}
                 displayEmpty
                 required
+                className="
+                stateSelect"
               >
-                <MenuItem value="">States</MenuItem>
+                <MenuItem className="stateOption" value="">
+                  States
+                </MenuItem>
                 {states.map((e) => (
-                  <MenuItem value={e} key={e}>
+                  <MenuItem className="stateOption" value={e} key={e}>
                     {e}
                   </MenuItem>
                 ))}
               </Select>
             </FormControl>
           </Grid>
-          <Grid xs={12} item className="gridItem">
+          <Grid xs={12} item className="gridItem zipCodeContainer">
             <TextFieldInput
               label="Zip Code"
               type="number"
@@ -232,7 +238,7 @@ function CreateEmployeeForm() {
             />
           </Grid>
           <h3>Department</h3>
-          <Grid item xs={12} className="gridItem">
+          <Grid item xs={12} className="gridItem departmentContainer">
             <FormControl fullWidth className="formInput">
               <Select
                 labelId="demo-simple-select-label"
@@ -257,6 +263,8 @@ function CreateEmployeeForm() {
             onClick={handlerSubmit}
             type="submit"
             variant="contained"
+            role={"button"}
+            id="submitButton"
             style={{
               margin: "20px auto",
               width: "100px",
