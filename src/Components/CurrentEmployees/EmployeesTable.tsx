@@ -281,7 +281,9 @@ export default function EmployeesTable() {
                   .map((row) => {
                     return (
                       <TableRow>
-                        <TableCell align="left">{row.firstName}</TableCell>
+                        <TableCell className="firstNameCell" align="left">
+                          {row.firstName}
+                        </TableCell>
                         <TableCell align="left">{row.lastName}</TableCell>
                         <TableCell align="left">
                           {`${row.startDate.getDay()}-${row.startDate.getMonth()}-${row.startDate.getFullYear()}`}

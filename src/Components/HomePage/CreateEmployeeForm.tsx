@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState, useRef } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import Stack from "@mui/material/Stack";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -11,6 +11,7 @@ import {
   MenuItem,
   Select,
   SelectChangeEvent,
+  InputLabel,
 } from "@mui/material";
 import { Dayjs } from "dayjs";
 import dataContext from "../../Context/dataContext";
@@ -20,6 +21,9 @@ import { Employee } from "../../Interface";
 import { department, states, initialValues } from "../../Fixtures";
 import { TextFieldTest, SelectTest, DateTest } from "./Form/TestFunction";
 import { nameRegex, adressRegex, zipCodeRegex } from "./Form/Regex";
+
+import SelectUnstyled from "@mui/base/SelectUnstyled";
+import OptionUnstyled from "@mui/base/OptionUnstyled";
 
 function CreateEmployeeForm() {
   const { values, setValues, handleInputChange } = useForm(initialValues);
@@ -46,13 +50,16 @@ function CreateEmployeeForm() {
   const startDateHandleChange = (newValue: Dayjs | null) => {
     setStartDateValue(newValue);
   };
-  const departmentHandleChange = (event: SelectChangeEvent) => {
-    setDepartmentValue(event.target.value as string);
+  const departmentHandleChange = (event: {
+    target: { textContent: string };
+  }) => {
+    setDepartmentValue(event.target.textContent as string);
   };
-  const stateHandleChange = (event: SelectChangeEvent) => {
-    console.log(event.target.value);
-
+  /*   const stateHandleChange = (event: SelectChangeEvent) => {
     setStateValue(event.target.value as string);
+  }; */
+  const stateHandleChange = (event: { target: { textContent: string } }) => {
+    setStateValue(event.target.textContent as string);
   };
 
   const handlerSubmit = (e: any) => {
@@ -204,28 +211,36 @@ function CreateEmployeeForm() {
               onChange={handleInputChange}
             />
           </Grid>
-          <Grid item xs={12} className="gridItem stateContainer">
-            <FormControl fullWidth className="formInput stateInput">
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={stateValue}
-                label="States"
-                onChange={stateHandleChange}
-                displayEmpty
-                required
-                className="
-                stateSelect"
+          <Grid
+            item
+            xs={12}
+            className="gridItem selectContainer stateContainer"
+          >
+            <InputLabel className="selectLabel">States</InputLabel>
+            <FormControl fullWidth className="formInput selectInput">
+              <SelectUnstyled
+                onChange={(event: any) => {
+                  stateHandleChange(event);
+                }}
+                className="selectUnstyled"
+                defaultValue={""}
+                data-testId="statesState"
               >
-                <MenuItem className="stateOption" value="">
-                  States
-                </MenuItem>
+                <OptionUnstyled
+                  className="selectOption"
+                  value=""
+                ></OptionUnstyled>
                 {states.map((e) => (
-                  <MenuItem className="stateOption" value={e} key={e}>
-                    {e}
-                  </MenuItem>
+                  <OptionUnstyled
+                    className={`selectOption`}
+                    data-testId={`${e}`}
+                    value={e}
+                    key={e}
+                  >
+                    <span data-testId="stateSpan">{e}</span>
+                  </OptionUnstyled>
                 ))}
-              </Select>
+              </SelectUnstyled>
             </FormControl>
           </Grid>
           <Grid xs={12} item className="gridItem zipCodeContainer">
@@ -238,27 +253,38 @@ function CreateEmployeeForm() {
             />
           </Grid>
           <h3>Department</h3>
-          <Grid item xs={12} className="gridItem departmentContainer">
-            <FormControl fullWidth className="formInput">
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={departmentValue}
-                label="Department"
-                onChange={departmentHandleChange}
-                displayEmpty
-                required
+          <Grid
+            item
+            xs={12}
+            className="gridItem selectContainer departmentContainer"
+          >
+            <InputLabel className="selectLabel">States</InputLabel>
+            <FormControl fullWidth className="formInput selectInput">
+              <SelectUnstyled
+                onChange={(event: any) => {
+                  departmentHandleChange(event);
+                }}
+                className="selectUnstyled"
+                defaultValue={""}
+                data-testId="departmentState"
               >
-                <MenuItem value="">Department</MenuItem>
+                <OptionUnstyled
+                  className="selectOption"
+                  value=""
+                ></OptionUnstyled>
                 {department.map((e) => (
-                  <MenuItem value={e} key={e}>
-                    {e}
-                  </MenuItem>
+                  <OptionUnstyled
+                    className={`selectOption`}
+                    data-testId={`${e}`}
+                    value={e}
+                    key={e}
+                  >
+                    <span data-testId="departmentSpan">{e}</span>
+                  </OptionUnstyled>
                 ))}
-              </Select>
+              </SelectUnstyled>
             </FormControl>
           </Grid>
-
           <Button
             onClick={handlerSubmit}
             type="submit"
@@ -283,3 +309,75 @@ function CreateEmployeeForm() {
 }
 
 export default CreateEmployeeForm;
+
+{
+  /*           <Grid item xs={12} className="gridItem stateContainer">
+            <FormControl fullWidth className="formInput stateInput">
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={stateValue}
+                label="States"
+                onChange={stateHandleChange}
+                displayEmpty
+                required
+                className="
+                stateSelect"
+                native={true}
+                data-testId="selectState"
+              >
+                <MenuItem className="stateOption" value="">
+                  States
+                </MenuItem>
+                {states.map((e) => (
+                  <MenuItem className="stateOption" value={e} key={e}>
+                    {e}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid> */
+}
+{
+  /*           <Grid item xs={12} className="gridItem stateContainer">
+            <FormControl fullWidth className="formInput stateInput">
+              <SelectUnstyled
+                onChange={(event: any) => {
+                  stateHandleChange(event);
+                }}
+              >
+                <OptionUnstyled className="stateOption" value="">
+                  States
+                </OptionUnstyled>
+                {states.map((e) => (
+                  <OptionUnstyled className={`stateOption`} value={e} key={e}>
+                    {e}
+                  </OptionUnstyled>
+                ))}
+              </SelectUnstyled>
+            </FormControl>
+          </Grid> */
+}
+
+{
+  /*           <Grid item xs={12} className="gridItem departmentContainer">
+            <FormControl fullWidth className="formInput">
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={departmentValue}
+                label="Department"
+                onChange={departmentHandleChange}
+                displayEmpty
+                required
+              >
+                <MenuItem value="">Department</MenuItem>
+                {department.map((e) => (
+                  <MenuItem value={e} key={e}>
+                    {e}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid> */
+}
