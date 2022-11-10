@@ -38,23 +38,6 @@ function getComparator<Key extends keyof any>(
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
 
-// This method is created for cross-browser compatibility, if you don't
-// need to support IE11, you can use Array.prototype.sort() directly
-function stableSort<T>(
-  array: readonly T[],
-  comparator: (a: T, b: T) => number
-) {
-  const stabilizedThis = array.map((el, index) => [el, index] as [T, number]);
-  stabilizedThis.sort((a, b) => {
-    const order = comparator(a[0], b[0]);
-    if (order !== 0) {
-      return order;
-    }
-    return a[1] - b[1];
-  });
-  return stabilizedThis.map((el) => el[0]);
-}
-
 interface HeadCell {
   disablePadding: boolean;
   id: keyof Employee;
@@ -134,7 +117,6 @@ function EmployeesTableHead(props: EmployeesTableProps) {
     order,
     orderBy,
 
-    rowCount,
     onRequestSort,
   } = props;
   const createSortHandler =
@@ -173,6 +155,8 @@ function EmployeesTableHead(props: EmployeesTableProps) {
 
 export default function EmployeesTable() {
   const contextData = useContext(dataContext);
+  console.log(contextData);
+
   const [order, setOrder] = useState<Order>("asc");
   const [orderBy, setOrderBy] = useState<keyof Employee>("zipCode");
   const [selected, setSelected] = useState<readonly string[]>([]);
@@ -281,8 +265,14 @@ export default function EmployeesTable() {
                   .map((row) => {
                     return (
                       <TableRow>
-                        <TableCell className="firstNameCell" align="left">
-                          {row.firstName}
+                        <TableCell
+                          className="firstName"
+                          aria-label="firstName"
+                          align="left"
+                        >
+                          <span data-testid="firstName" key={row.lastName}>
+                            {row.firstName}
+                          </span>
                         </TableCell>
                         <TableCell align="left">{row.lastName}</TableCell>
                         <TableCell align="left">

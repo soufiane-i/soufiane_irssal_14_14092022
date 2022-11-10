@@ -1,24 +1,35 @@
 import "./App.css";
 import Router from "./Router";
+import { HashRouter } from "react-router-dom";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import dataContext from "./Context/dataContext";
-import { rows } from "./Fixtures";
 import { Employee } from "./Interface";
+import { GetEmployees, SetEmployees } from "./API/employees";
 
 function App() {
-  const [employees, setEmployees] = useState<Employee[]>(rows);
+  const [employees, setEmployees] = useState<Employee[]>([]);
+  useEffect(() => {
+    setEmployees(GetEmployees());
+  }, []);
+
+  function UpdateEmployee(employees: Employee[]) {
+    setEmployees([...employees]);
+    SetEmployees([...employees]);
+  }
 
   const contextData = {
     employees,
-    updateEmployees: setEmployees,
+    updateEmployees: UpdateEmployee,
   };
   return (
-    <dataContext.Provider value={contextData}>
-      <div id="app">
-        <Router />
-      </div>
-    </dataContext.Provider>
+    <HashRouter>
+      <dataContext.Provider value={contextData}>
+        <div id="app">
+          <Router />
+        </div>
+      </dataContext.Provider>
+    </HashRouter>
   );
 }
 

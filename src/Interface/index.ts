@@ -13,4 +13,5 @@ export interface Employee {
 export interface NavProps {
   refLink: string;
   text: string;
+  arrowDirection: string;
 }

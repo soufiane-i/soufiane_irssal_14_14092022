@@ -29,7 +29,7 @@ header h1 {
 
 nav {
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   justify-content: center;
   align-items: center;
   background-color: #93ad18;
@@ -334,4 +334,37 @@ input:-webkit-autofill:active {
 .MuiList-root.MuiList-padding.MuiMenu-list.css-6hp17o-MuiList-root-MuiMenu-list {
   display: flex !important;
   flex-direction: column;
+}
+
+.css-bp8rxh:hover:not(.Mui-disabled) {
+  border-bottom: none !important;
+}
+.css-bp8rxh:hover:not(.Mui-disabled)::before {
+  border-bottom: none !important;
+}
+
+.css-bp8rxh::before {
+  border-bottom: none !important;
+}
+
+.gridItem {
+  border-radius: 10px !important;
+  background-color: white;
+}
+
+.css-1uvydh2 {
+  padding: 10px 15px !important;
+}
+
+.css-q34dxg,
+.css-1bigob2 {
+  border-bottom: none !important;
+}
+
+.leftNav {
+  flex-direction: row-reverse !important;
+}
+
+.leftArrow {
+  transform: scale(-1);
 }

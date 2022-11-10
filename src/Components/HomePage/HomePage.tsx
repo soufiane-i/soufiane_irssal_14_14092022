@@ -7,7 +7,11 @@ function HomePage() {
   return (
     <>
       <Header />
-      <Nav refLink={"employee-list"} text={"View Current Employees"} />
+      <Nav
+        refLink="employee-list"
+        text="View Current Employees"
+        arrowDirection="right"
+      />
       <main>
         <CreateEmployeeForm />
       </main>

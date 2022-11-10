@@ -7,7 +7,7 @@ function Nav(props: NavProps) {
 
   const LinkTo = (e: any) => {
     e.preventDefault();
-    if (props.refLink == "employee-list") {
+    if (props.refLink === "employee-list") {
       navigate("/employee-list");
     } else {
       navigate("/");
@@ -18,13 +18,17 @@ function Nav(props: NavProps) {
     <nav>
       <Link
         href={`/${props.refLink}`}
-        className="navLink"
+        className={`navLink ${props.arrowDirection}Nav`}
         variant="body1"
         underline="none"
         onClick={LinkTo}
       >
         <p>{props.text}</p>
-        <img src="./arrow.svg" />
+        <img
+          src="./arrow.svg"
+          alt="arrow"
+          className={`${props.arrowDirection}Arrow`}
+        />
       </Link>
     </nav>
   );

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import { useContext, useState, useRef } from "react";
 import Stack from "@mui/material/Stack";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -8,9 +8,6 @@ import {
   Grid,
   TextField,
   FormControl,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
   InputLabel,
 } from "@mui/material";
 import { Dayjs } from "dayjs";
@@ -55,9 +52,6 @@ function CreateEmployeeForm() {
   }) => {
     setDepartmentValue(event.target.textContent as string);
   };
-  /*   const stateHandleChange = (event: SelectChangeEvent) => {
-    setStateValue(event.target.value as string);
-  }; */
   const stateHandleChange = (event: { target: { textContent: string } }) => {
     setStateValue(event.target.textContent as string);
   };
@@ -224,7 +218,9 @@ function CreateEmployeeForm() {
                 }}
                 className="selectUnstyled"
                 defaultValue={""}
-                data-testId="statesState"
+                data-testid="statesState"
+                role="button"
+                aria-label="select button"
               >
                 <OptionUnstyled
                   className="selectOption"
@@ -233,11 +229,11 @@ function CreateEmployeeForm() {
                 {states.map((e) => (
                   <OptionUnstyled
                     className={`selectOption`}
-                    data-testId={`${e}`}
+                    data-testid={`${e}`}
                     value={e}
                     key={e}
                   >
-                    <span data-testId="stateSpan">{e}</span>
+                    <span data-testid="stateSpan">{e}</span>
                   </OptionUnstyled>
                 ))}
               </SelectUnstyled>
@@ -266,7 +262,9 @@ function CreateEmployeeForm() {
                 }}
                 className="selectUnstyled"
                 defaultValue={""}
-                data-testId="departmentState"
+                data-testid="departmentState"
+                role="button"
+                aria-label="select button"
               >
                 <OptionUnstyled
                   className="selectOption"
@@ -275,11 +273,11 @@ function CreateEmployeeForm() {
                 {department.map((e) => (
                   <OptionUnstyled
                     className={`selectOption`}
-                    data-testId={`${e}`}
+                    data-testid={`${e}`}
                     value={e}
                     key={e}
                   >
-                    <span data-testId="departmentSpan">{e}</span>
+                    <span data-testid="departmentSpan">{e}</span>
                   </OptionUnstyled>
                 ))}
               </SelectUnstyled>
@@ -289,8 +287,9 @@ function CreateEmployeeForm() {
             onClick={handlerSubmit}
             type="submit"
             variant="contained"
-            role={"button"}
+            role="button"
             id="submitButton"
+            aria-label="submit button"
             style={{
               margin: "20px auto",
               width: "100px",
@@ -309,75 +308,3 @@ function CreateEmployeeForm() {
 }
 
 export default CreateEmployeeForm;
-
-{
-  /*           <Grid item xs={12} className="gridItem stateContainer">
-            <FormControl fullWidth className="formInput stateInput">
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={stateValue}
-                label="States"
-                onChange={stateHandleChange}
-                displayEmpty
-                required
-                className="
-                stateSelect"
-                native={true}
-                data-testId="selectState"
-              >
-                <MenuItem className="stateOption" value="">
-                  States
-                </MenuItem>
-                {states.map((e) => (
-                  <MenuItem className="stateOption" value={e} key={e}>
-                    {e}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Grid> */
-}
-{
-  /*           <Grid item xs={12} className="gridItem stateContainer">
-            <FormControl fullWidth className="formInput stateInput">
-              <SelectUnstyled
-                onChange={(event: any) => {
-                  stateHandleChange(event);
-                }}
-              >
-                <OptionUnstyled className="stateOption" value="">
-                  States
-                </OptionUnstyled>
-                {states.map((e) => (
-                  <OptionUnstyled className={`stateOption`} value={e} key={e}>
-                    {e}
-                  </OptionUnstyled>
-                ))}
-              </SelectUnstyled>
-            </FormControl>
-          </Grid> */
-}
-
-{
-  /*           <Grid item xs={12} className="gridItem departmentContainer">
-            <FormControl fullWidth className="formInput">
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={departmentValue}
-                label="Department"
-                onChange={departmentHandleChange}
-                displayEmpty
-                required
-              >
-                <MenuItem value="">Department</MenuItem>
-                {department.map((e) => (
-                  <MenuItem value={e} key={e}>
-                    {e}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Grid> */
-}

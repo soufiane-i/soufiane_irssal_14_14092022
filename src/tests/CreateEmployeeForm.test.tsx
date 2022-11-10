@@ -309,7 +309,6 @@ describe("L'utilisateur appuie sur le bouton submit", () => {
       });
 
       const modal = document.querySelector(".modalContainer");
-      console.log(modal);
 
       expect(modal).not.toHaveClass("modalOff");
     });
@@ -342,7 +341,6 @@ test("Fermer la modal de confirmation", () => {
   act(() => {
     fireEvent.click(cross);
   });
-  console.log(modal?.className);
 
   expect(modal).toHaveClass("modalOff");
 });

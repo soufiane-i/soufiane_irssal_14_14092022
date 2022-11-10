@@ -6,12 +6,11 @@ import dataContext from "../../Context/dataContext";
 
 function CurrentEmployees() {
   const contextData = useContext(dataContext);
-  console.log(contextData);
 
   return (
     <>
       <Header />
-      <Nav refLink={""} text={"Home"} />
+      <Nav refLink="" text="Home" arrowDirection="left" />
       <main>
         <EmployeesTable />
       </main>

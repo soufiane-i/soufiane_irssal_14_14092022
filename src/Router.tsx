@@ -5,12 +5,10 @@ import HomePage from "./Components/HomePage/HomePage";
 function Router() {
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/employee-list" element={<CurrentEmployees />} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/employee-list" element={<CurrentEmployees />} />
+      </Routes>
     </>
   );
 }
