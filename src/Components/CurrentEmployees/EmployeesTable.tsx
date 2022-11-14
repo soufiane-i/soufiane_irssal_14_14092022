@@ -158,7 +158,7 @@ export default function EmployeesTable() {
   console.log(contextData);
 
   const [order, setOrder] = useState<Order>("asc");
-  const [orderBy, setOrderBy] = useState<keyof Employee>("zipCode");
+  const [orderBy, setOrderBy] = useState<keyof Employee>("firstName");
   const [selected, setSelected] = useState<readonly string[]>([]);
   const [page, setPage] = useState(0);
   const [dense, setDense] = useState(false);
@@ -202,15 +202,6 @@ export default function EmployeesTable() {
     setOrderBy(property);
   };
 
-  const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.checked) {
-      const newSelected = contextData.employees.map((n) => n.firstName);
-      setSelected(newSelected);
-      return;
-    }
-    setSelected([]);
-  };
-
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
   };
@@ -246,6 +237,7 @@ export default function EmployeesTable() {
             value={searched}
             onChange={(searchVal) => requestSearch(searchVal)}
             onCancelSearch={() => cancelSearch()}
+            data-testid="searchBar"
           />
         </div>
         <Paper sx={{ width: "100%", mb: 2 }}>
@@ -266,24 +258,37 @@ export default function EmployeesTable() {
                     return (
                       <TableRow>
                         <TableCell
-                          className="firstName"
                           aria-label="firstName"
                           align="left"
+                          data-testid="firstName"
                         >
-                          <span data-testid="firstName" key={row.lastName}>
-                            {row.firstName}
-                          </span>
+                          {row.firstName}
                         </TableCell>
-                        <TableCell align="left">{row.lastName}</TableCell>
-                        <TableCell align="left">
+                        <TableCell align="left" data-testid="lastName">
+                          {row.lastName}
+                        </TableCell>
+                        <TableCell align="left" data-testid="startDate">
                           {`${row.startDate.getDay()}-${row.startDate.getMonth()}-${row.startDate.getFullYear()}`}
                         </TableCell>
-                        <TableCell align="left">{row.department}</TableCell>
-                        <TableCell align="left">{`${row.dateOfBirth.getDay()}-${row.dateOfBirth.getMonth()}-${row.dateOfBirth.getFullYear()}`}</TableCell>
-                        <TableCell align="left">{row.street}</TableCell>
-                        <TableCell align="left">{row.city}</TableCell>
-                        <TableCell align="left">{row.state}</TableCell>
-                        <TableCell align="left">{row.zipCode}</TableCell>
+                        <TableCell align="left" data-testid="department">
+                          {row.department}
+                        </TableCell>
+                        <TableCell
+                          align="left"
+                          data-testid="dateOfBirth"
+                        >{`${row.dateOfBirth.getDay()}-${row.dateOfBirth.getMonth()}-${row.dateOfBirth.getFullYear()}`}</TableCell>
+                        <TableCell align="left" data-testid="street">
+                          {row.street}
+                        </TableCell>
+                        <TableCell align="left" data-testid="city">
+                          {row.city}
+                        </TableCell>
+                        <TableCell align="left" data-testid="state">
+                          {row.state}
+                        </TableCell>
+                        <TableCell align="left" data-testid="zipCode">
+                          {row.zipCode}
+                        </TableCell>
                       </TableRow>
                     );
                   })}
