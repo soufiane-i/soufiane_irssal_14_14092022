@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -129,7 +129,7 @@ function EmployeesTableHead(props: EmployeesTableProps) {
       <TableRow>
         {headCells.map((headCell) => (
           <TableCell
-            key={headCell.id}
+            key={`${headCell.id}-${Math.random()}`}
             align={"left"}
             padding={"normal"}
             sortDirection={orderBy === headCell.id ? order : false}
@@ -155,7 +155,6 @@ function EmployeesTableHead(props: EmployeesTableProps) {
 
 export default function EmployeesTable() {
   const contextData = useContext(dataContext);
-  console.log(contextData);
 
   const [order, setOrder] = useState<Order>("asc");
   const [orderBy, setOrderBy] = useState<keyof Employee>("firstName");
@@ -163,8 +162,13 @@ export default function EmployeesTable() {
   const [page, setPage] = useState(0);
   const [dense, setDense] = useState(false);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [rowsAct, setRowsAct] = useState<Employee[]>(contextData.employees);
+  const [rowsAct, setRowsAct] = useState<Employee[]>([]);
   const [searched, setSearched] = useState<string>("");
+  useEffect(() => {
+    if (contextData.employees.length !== 0) {
+      setRowsAct(contextData.employees);
+    }
+  });
 
   const requestSearch = (searchedVal: string) => {
     const filteredRows = contextData.employees.filter((row) => {
@@ -218,6 +222,7 @@ export default function EmployeesTable() {
     page > 0
       ? Math.max(0, (1 + page) * rowsPerPage - contextData.employees.length)
       : 0;
+  console.log(contextData.employees.length);
 
   return (
     <>
@@ -248,6 +253,7 @@ export default function EmployeesTable() {
                 orderBy={orderBy}
                 onRequestSort={handleRequestSort}
                 rowCount={contextData.employees.length}
+                key={contextData.employees.length}
               />
               <TableBody>
                 {rowsAct
@@ -256,7 +262,7 @@ export default function EmployeesTable() {
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row) => {
                     return (
-                      <TableRow>
+                      <TableRow key={Math.random()}>
                         <TableCell
                           aria-label="firstName"
                           align="left"
@@ -264,29 +270,58 @@ export default function EmployeesTable() {
                         >
                           {row.firstName}
                         </TableCell>
-                        <TableCell align="left" data-testid="lastName">
+                        <TableCell
+                          align="left"
+                          data-testid="lastName"
+                          key={row.lastName}
+                        >
                           {row.lastName}
                         </TableCell>
-                        <TableCell align="left" data-testid="startDate">
+                        <TableCell
+                          align="left"
+                          data-testid="startDate"
+                          key={Math.random()}
+                        >
                           {`${row.startDate.getDay()}-${row.startDate.getMonth()}-${row.startDate.getFullYear()}`}
                         </TableCell>
-                        <TableCell align="left" data-testid="department">
+                        <TableCell
+                          align="left"
+                          data-testid="department"
+                          key={Math.random()}
+                        >
                           {row.department}
                         </TableCell>
                         <TableCell
                           align="left"
                           data-testid="dateOfBirth"
+                          key={Math.random()}
                         >{`${row.dateOfBirth.getDay()}-${row.dateOfBirth.getMonth()}-${row.dateOfBirth.getFullYear()}`}</TableCell>
-                        <TableCell align="left" data-testid="street">
+                        <TableCell
+                          align="left"
+                          data-testid="street"
+                          key={Math.random()}
+                        >
                           {row.street}
                         </TableCell>
-                        <TableCell align="left" data-testid="city">
+                        <TableCell
+                          align="left"
+                          data-testid="city"
+                          key={Math.random()}
+                        >
                           {row.city}
                         </TableCell>
-                        <TableCell align="left" data-testid="state">
+                        <TableCell
+                          align="left"
+                          data-testid="state"
+                          key={Math.random()}
+                        >
                           {row.state}
                         </TableCell>
-                        <TableCell align="left" data-testid="zipCode">
+                        <TableCell
+                          align="left"
+                          data-testid="zipCode"
+                          key={Math.random()}
+                        >
                           {row.zipCode}
                         </TableCell>
                       </TableRow>
