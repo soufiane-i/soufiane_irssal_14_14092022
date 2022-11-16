@@ -81,6 +81,138 @@ export const rows = [
     "Ruckersville",
     15
   ),
+  createData(
+    "Mccormick",
+    "Puckett",
+    new Date("2020-08-22"),
+    "male",
+    new Date("2020-08-22"),
+    "881 Bedford Place",
+    "Caberfae",
+    "Websterville",
+    10
+  ),
+  createData(
+    "Cecilia",
+    "Blair",
+    new Date("2020-07-22"),
+    "female",
+    new Date("2020-08-22"),
+    "106 Milton Street",
+    "Kenwood",
+    "Basye",
+    65
+  ),
+  createData(
+    "Alyssa",
+    "Pitts",
+    new Date("2020-06-22"),
+    "female",
+    new Date("2020-08-22"),
+    "167 Ashford Street",
+    "Noblestown",
+    "Lavalette",
+    56
+  ),
+  createData(
+    "Vivian",
+    "Harrington",
+    new Date("2020-05-22"),
+    "female",
+    new Date("2020-08-22"),
+    "230 Glendale Court",
+    "Dola",
+    "Ruckersville",
+    15
+  ),
+  createData(
+    "Mccormick",
+    "Puckett",
+    new Date("2020-08-22"),
+    "male",
+    new Date("2020-08-22"),
+    "881 Bedford Place",
+    "Caberfae",
+    "Websterville",
+    10
+  ),
+  createData(
+    "Cecilia",
+    "Blair",
+    new Date("2020-07-22"),
+    "female",
+    new Date("2020-08-22"),
+    "106 Milton Street",
+    "Kenwood",
+    "Basye",
+    65
+  ),
+  createData(
+    "Alyssa",
+    "Pitts",
+    new Date("2020-06-22"),
+    "female",
+    new Date("2020-08-22"),
+    "167 Ashford Street",
+    "Noblestown",
+    "Lavalette",
+    56
+  ),
+  createData(
+    "Vivian",
+    "Harrington",
+    new Date("2020-05-22"),
+    "female",
+    new Date("2020-08-22"),
+    "230 Glendale Court",
+    "Dola",
+    "Ruckersville",
+    15
+  ),
+  createData(
+    "Mccormick",
+    "Puckett",
+    new Date("2020-08-22"),
+    "male",
+    new Date("2020-08-22"),
+    "881 Bedford Place",
+    "Caberfae",
+    "Websterville",
+    10
+  ),
+  createData(
+    "Cecilia",
+    "Blair",
+    new Date("2020-07-22"),
+    "female",
+    new Date("2020-08-22"),
+    "106 Milton Street",
+    "Kenwood",
+    "Basye",
+    65
+  ),
+  createData(
+    "Alyssa",
+    "Pitts",
+    new Date("2020-06-22"),
+    "female",
+    new Date("2020-08-22"),
+    "167 Ashford Street",
+    "Noblestown",
+    "Lavalette",
+    56
+  ),
+  createData(
+    "Vivian",
+    "Harrington",
+    new Date("2020-05-22"),
+    "female",
+    new Date("2020-08-22"),
+    "230 Glendale Court",
+    "Dola",
+    "Ruckersville",
+    15
+  ),
 ];
 
 export const department = [

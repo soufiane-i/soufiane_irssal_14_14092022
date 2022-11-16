@@ -162,13 +162,13 @@ export default function EmployeesTable() {
   const [page, setPage] = useState(0);
   const [dense, setDense] = useState(false);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [rowsAct, setRowsAct] = useState<Employee[]>([]);
+  const [rowsAct, setRowsAct] = useState<Employee[]>(contextData.employees);
   const [searched, setSearched] = useState<string>("");
   useEffect(() => {
     if (contextData.employees.length !== 0) {
       setRowsAct(contextData.employees);
     }
-  });
+  }, []);
 
   const requestSearch = (searchedVal: string) => {
     const filteredRows = contextData.employees.filter((row) => {
@@ -190,6 +190,7 @@ export default function EmployeesTable() {
         row.zipCode.toString().toLowerCase().includes(searchedVal.toLowerCase())
       );
     });
+    console.log(filteredRows);
     setRowsAct(filteredRows);
   };
   const cancelSearch = () => {
@@ -222,7 +223,6 @@ export default function EmployeesTable() {
     page > 0
       ? Math.max(0, (1 + page) * rowsPerPage - contextData.employees.length)
       : 0;
-  console.log(contextData.employees.length);
 
   return (
     <>
