@@ -50,12 +50,12 @@ nav img {
 
 main {
   display: grid;
-  grid-template-rows: 80px auto;
+  grid-template-rows: 60px auto;
   background-color: #f2f9d2;
 }
 
 main h2 {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: normal;
   color: #4c5a0c;
   margin: 10px 0;
@@ -190,7 +190,7 @@ fieldset {
 }
 
 form {
-  padding: 40px 0;
+  padding: 0px 0;
 }
 
 h3 {
@@ -313,7 +313,8 @@ input:-webkit-autofill:active {
   border-top-right-radius: 5px;
   padding: 0px;
   max-height: 120px !important;
-  width: 195px !important;
+  width: 130px !important;
+  overflow-x: hidden;
 }
 
 .MuiSelectUnstyled-popper.MuiPopperUnstyled-root li {
@@ -321,10 +322,7 @@ input:-webkit-autofill:active {
   text-align: left;
   list-style-type: none;
   cursor: pointer;
-}
-
-.MuiSelectUnstyled-popper.MuiPopperUnstyled-root li:hover {
-  background-color: #d8ec79;
+  transform: translateX(-30px);
 }
 
 .selectUnstyled {
@@ -350,6 +348,7 @@ input:-webkit-autofill:active {
 .gridItem {
   border-radius: 10px !important;
   background-color: white;
+  margin: 10px 0 !important;
 }
 
 .css-1uvydh2 {
