@@ -162,13 +162,14 @@ export default function EmployeesTable() {
   const [page, setPage] = useState(0);
   const [dense, setDense] = useState(false);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [rowsAct, setRowsAct] = useState<Employee[]>(contextData.employees);
+  const [rowsAct, setRowsAct] = useState<Employee[]>([]);
   const [searched, setSearched] = useState<string>("");
+
   useEffect(() => {
     if (contextData.employees.length !== 0) {
       setRowsAct(contextData.employees);
     }
-  }, []);
+  }, [contextData.employees]);
 
   const requestSearch = (searchedVal: string) => {
     const filteredRows = contextData.employees.filter((row) => {

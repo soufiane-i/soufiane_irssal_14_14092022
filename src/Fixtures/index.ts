@@ -81,7 +81,7 @@ export const rows = [
     "Ruckersville",
     15
   ),
-  createData(
+  /*   createData(
     "Mccormick",
     "Puckett",
     new Date("2020-08-22"),
@@ -212,7 +212,7 @@ export const rows = [
     "Dola",
     "Ruckersville",
     15
-  ),
+  ), */
 ];
 
 export const department = [
