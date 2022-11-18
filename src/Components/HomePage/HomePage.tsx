@@ -3,6 +3,10 @@ import Nav from "../Nav";
 import CreateEmployeeForm from "./CreateEmployeeForm";
 import { ModalPlugin } from "soufiane.irssal_plugin";
 
+/**
+ * Global Struture of page
+ * @returns HomePage Component
+ */
 function HomePage() {
   return (
     <>

@@ -1,5 +1,9 @@
 import { Typography } from "@mui/material";
 
+/**
+ * Header of pages
+ * @returns Header Component
+ */
 function Header() {
   return (
     <header>

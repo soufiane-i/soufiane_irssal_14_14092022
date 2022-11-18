@@ -22,6 +22,10 @@ import { nameRegex, adressRegex, zipCodeRegex } from "./Form/Regex";
 import SelectUnstyled from "@mui/base/SelectUnstyled";
 import OptionUnstyled from "@mui/base/OptionUnstyled";
 
+/**
+ * Form for register employee
+ * @returns CreateEmployeeForm Component
+ */
 function CreateEmployeeForm() {
   const { values, setValues, handleInputChange } = useForm(initialValues);
   const [dateOfBirthData, setDateOfBirthValue] = useState<any>("");
@@ -44,14 +48,17 @@ function CreateEmployeeForm() {
   const dateOfBirthHandleChange = (newValue: Dayjs | null) => {
     setDateOfBirthValue(newValue);
   };
+
   const startDateHandleChange = (newValue: Dayjs | null) => {
     setStartDateValue(newValue);
   };
+
   const departmentHandleChange = (event: {
     target: { textContent: string };
   }) => {
     setDepartmentValue(event.target.textContent as string);
   };
+
   const stateHandleChange = (event: { target: { textContent: string } }) => {
     setStateValue(event.target.textContent as string);
   };

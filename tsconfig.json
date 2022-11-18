@@ -16,5 +16,9 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
+  "typedocOptions": {
+    "entryPoints": ["src/Components/**"],
+    "out": "docs"
+  },
   "include": ["src/**/*"]
 }

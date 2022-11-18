@@ -2,6 +2,11 @@ import { Link } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { NavProps } from "../Interface/";
 
+/**
+ * Nav
+ * @param props properties of navigation (arrow direction, text)
+ * @returns nav component
+ */
 function Nav(props: NavProps) {
   const navigate = useNavigate();
 

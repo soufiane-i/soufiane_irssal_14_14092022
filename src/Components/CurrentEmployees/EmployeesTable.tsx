@@ -14,6 +14,7 @@ import SearchBar from "material-ui-search-bar";
 import { Employee } from "../../Interface";
 import dataContext from "../../Context/dataContext";
 
+//Value comparator
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
@@ -153,7 +154,11 @@ function EmployeesTableHead(props: EmployeesTableProps) {
   );
 }
 
-export default function EmployeesTable() {
+/**
+ * Employee list table with page row number and search bar
+ * @returns EmployeesTable Component
+ */
+function EmployeesTable() {
   const contextData = useContext(dataContext);
 
   const [order, setOrder] = useState<Order>("asc");
@@ -345,3 +350,5 @@ export default function EmployeesTable() {
     </>
   );
 }
+
+export default EmployeesTable;

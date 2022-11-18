@@ -4,6 +4,10 @@ import EmployeesTable from "./EmployeesTable";
 import { useContext } from "react";
 import dataContext from "../../Context/dataContext";
 
+/**
+ * Page containing header, navigation button and the employee table
+ * @returns CurrentEmployees component
+ */
 function CurrentEmployees() {
   const contextData = useContext(dataContext);
 

@@ -11,6 +11,11 @@ type DatePickerProps = {
   placeholder: string;
 };
 
+/**
+ * DatePickerProps
+ * @param props DatePickerProps
+ * @returns DatePickerProps Component
+ */
 function DatePicker(props: DatePickerProps) {
   const [value, setValue] = useState<any>("fefef");
   const contextData = useContext(dataContext);
