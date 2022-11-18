@@ -14,7 +14,13 @@ import SearchBar from "material-ui-search-bar";
 import { Employee } from "../../Interface";
 import dataContext from "../../Context/dataContext";
 
-//Value comparator
+/**
+ * descending comparator function
+ * @param a
+ * @param b
+ * @param orderBy
+ * @returns
+ */
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
@@ -113,6 +119,11 @@ interface EmployeesTableProps {
   rowCount: number;
 }
 
+/**
+ * EmployeesTableHead : search bar and row per page selection
+ * @param props
+ * @returns
+ */
 function EmployeesTableHead(props: EmployeesTableProps) {
   const {
     order,
@@ -176,6 +187,10 @@ function EmployeesTable() {
     }
   }, [contextData.employees]);
 
+  /**
+   * Request fucntion for search bar
+   * @param searchedVal input content
+   */
   const requestSearch = (searchedVal: string) => {
     const filteredRows = contextData.employees.filter((row) => {
       return (

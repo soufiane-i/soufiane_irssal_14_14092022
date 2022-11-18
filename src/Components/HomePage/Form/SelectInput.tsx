@@ -11,6 +11,11 @@ type SelectInputProps = {
   label: string;
 };
 
+/**
+ * Select input
+ * @param props
+ * @returns
+ */
 function SelectInput(props: SelectInputProps): any {
   const [useName, setUseName] = useState("");
   const contextData = useContext(dataContext);

@@ -1,3 +1,10 @@
+/**
+ * Test input content with regex
+ * @param regex
+ * @param value
+ * @param isValue
+ * @param input
+ */
 export function TextFieldTest(
   regex: RegExp,
   value: string,
@@ -13,6 +20,12 @@ export function TextFieldTest(
   }
 }
 
+/**
+ * Test select input content
+ * @param value
+ * @param isValue
+ * @param input
+ */
 export function SelectTest(
   value: string,
   isValue: React.MutableRefObject<boolean>,
@@ -27,6 +40,12 @@ export function SelectTest(
   }
 }
 
+/**
+ * Test of date input
+ * @param value
+ * @param isValue
+ * @param input
+ */
 export function DateTest(
   value: Date,
   isValue: React.MutableRefObject<boolean>,
